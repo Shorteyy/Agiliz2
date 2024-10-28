@@ -74,6 +74,7 @@ explore: inventory_items {
 }
 
 explore: users {}
+explore: distribution_centers {}
 
 explore: products {
   join: distribution_centers {
