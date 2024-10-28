@@ -81,6 +81,15 @@ view: inventory_items {
     END ;;
     value_format: "#,##0"
   }
+  measure: tot_retail_price {
+    type: sum
+    sql:  ${product_retail_price} ;;
+    value_format: "€ #, ##0"
+  }
+  measure: amount_per_branch{
+    type : sum
+    sql:  ${product_brand} ;;
+  }
 
 #parameters
 
