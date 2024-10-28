@@ -60,7 +60,35 @@ view: order_items {
     type: count
     drill_fields: [detail*]
   }
+  measure: number_sales_price {
+    type: number
+    sql: ${sale_price} ;;
+  }
 
+  parameter: level_agg {
+    type: number
+    allowed_value: {
+      label: "MIN"
+      value: "MIN"
+    }
+    allowed_value: {
+      label: "MAX"
+      value: "MAX"
+    }
+    allowed_value: {
+      label: "AVG"
+      value: "Average"
+    }
+
+  }
+  measure: choose_agg {
+    label_from_parameter: level_agg
+    type:  number
+    sql: {% parameter level_agg %}(${number_sales_price}) ;;
+
+
+
+  }
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
